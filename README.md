@@ -5,7 +5,7 @@ This repo takes advantage of [odoo13-docker-compose](https://github.com/minhng92
 ## Quick start
 (Supports multiple Odoo instances on one server)Install [docker](https://docs.docker.com/get-docker/) and [docker-compose](https://docs.docker.com/compose/install/) yourself, then run:
 ```bash
-curl -s https://raw.githubusercontent.com/minhng92/odoo-13-docker-compose/master/run.sh | sudo bash -s odoo-o
+git clone https://github.com/hophamlam/test-odoo.git && cd test-odoo && sudo docker-compose up -d
 ```
 
 to set up first Odoo instance @ `localhost:10013` (default master password: `minhng.info`)
