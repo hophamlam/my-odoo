@@ -23,7 +23,7 @@ jobs:
       
       - name: remove and create new .env
         env:
-          ODOO_DB: ${{ secrects.ODOO_DB }}
+          ODOO_DB: ${{ secrets.ODOO_DB }}
         run: |
             sudo rm ~/${{ github.event.repository.name }}/.env
             touch .env
