@@ -9,9 +9,9 @@ jobs:
         uses: appleboy/ssh-action@master
         env:
           USERNAME: ${{ github.repository_owner }}
-          REPO: ${{ github.repository }}
-
-        with:
+          REPO: ${{ github.event.repository.name }}
+        with: USERNAME, REPO
+        envs: 
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.KEY }}
@@ -20,7 +20,7 @@ jobs:
           script: |
             if [ ! -d ~/$REPO ]
             then
-            sudo git clone https://github.com/$USERNAME/$REPO.git
+            sudo git clone https://github.com/$REPO.git
             else
             sudo git -C ~/$REPO pull 
             fi
