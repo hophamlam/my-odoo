@@ -1,7 +1,7 @@
 version: '2'
 services:
   db:
-    image: postgres:11
+    image: postgres:11 # Change your Postgres version here
     user: root
     environment:
       - POSTGRES_PASSWORD=odoo
@@ -12,7 +12,7 @@ services:
         - ./postgresql:/var/lib/postgresql/data
 
   odoo13:
-    image: odoo:13
+    image: odoo:13 # Change your Odoo version here
     user: root
     depends_on:
       - db
