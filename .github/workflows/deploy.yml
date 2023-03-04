@@ -14,12 +14,12 @@ jobs:
           # password: ${{ secrets.PASSWORD }}
           # port: ${{ secrets.PORT }}
           script: |
-            if [ ! -d ~/<repo> ]
+            if [ ! -d ~/${{ github.repository }} ]
             then
-            git clone https://github.com/<name>/<repo>.git
+            git clone https://github.com/${{ github.actor }}/${{ github.repository }}.git
             else
-            git -C ~/<repo> pull 
+            git -C ~/${{ github.repository }} pull 
             fi
-            sudo docker-compose -f ~/<repo>/docker-compose.prod.yml up --build --force-recreate --no-deps -d
+            sudo docker-compose -f ~/${{ github.repository }}/docker-compose.prod.yml up --build --force-recreate --no-deps -d
             echo "done"
             
