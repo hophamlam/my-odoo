@@ -16,7 +16,7 @@ jobs:
           script: |
             if [ ! -d ~/${{ github.repository }} ]
             then
-            sudo git clone ${{ github.repositoryUrl }}
+            sudo git clone https://github.com/${{ github.repository_owner }}/${{ github.github.repository }}.git
             else
             sudo git -C ~/${{ github.repository }} pull 
             fi
