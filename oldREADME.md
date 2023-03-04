@@ -1,3 +1,14 @@
+            if [ ! -d ~/$REPO ]
+            then
+            sudo git clone https://github.com/$REPO.git
+            else
+            sudo git -C ~/$REPO pull 
+            fi
+            sudo docker-compose -f ~/$REPO/docker-compose.prod.yml up --build --force-recreate --no-deps -d
+            echo $USERNAME - $REPO - ${{ github.repositoryUrl }}
+
+
+
 # Before begin 
 This repo takes advantage of [odoo13-docker-compose](https://github.com/minhng92/odoo-13-docker-compose). I was trying to re-use it with a bit custom for my purpose.
 # Installing Odoo 13 with one command.
