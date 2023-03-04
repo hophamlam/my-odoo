@@ -7,7 +7,7 @@ jobs:
     steps:
       - name: executing remote ssh commands using ssh key
         uses: appleboy/ssh-action@master
-        env:
+        # env:
           # REPO: ${{ github.repository }} # e.g. "appleboy/ssh-action"
           # DIRECTORY: ${{ github.event.repository.name }}
           # DB_NAME: ${{ secrets.DB_NAME }}
