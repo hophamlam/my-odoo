@@ -25,6 +25,11 @@ jobs:
             else
             sudo git -C ~/$DIRECTORY pull 
             fi
+            sudo rm ~/$DIRECTORY/.env
+            touch .env
+            echo "${{ secrets.DB_NAME }}" > .env
+            echo "${{ secrets.DB_USER }}" > .env
+            echo "${{ secrets.DB_PASSWORD }}" > .env
             sudo docker-compose -f ~/$DIRECTORY/docker-compose.prod.yml up --build --force-recreate --no-deps -d
             echo $DIRECTORY - $REPO
 
