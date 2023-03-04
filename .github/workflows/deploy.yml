@@ -10,9 +10,12 @@ jobs:
         env:
           REPO: ${{ github.repository }} # e.g. "appleboy/ssh-action"
           DIRECTORY: ${{ github.event.repository.name }}
+          DB_NAME: ${{ secrets.DB_NAME }}
+          DB_USERNAME: ${{ secrets.DB_USER }}
+          DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
           # TOKEN: ${{ github.token }}
         with: 
-          envs: REPO,DIRECTORY
+          envs: REPO, DIRECTORY, DB_NAME, DB_USERNAME, DB_PASSWORD
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.KEY }}
@@ -27,9 +30,9 @@ jobs:
             fi
             sudo rm ~/$DIRECTORY/.env
             touch .env
-            echo "${{ secrets.DB_NAME }}" > .env
-            echo "${{ secrets.DB_USER }}" > .env
-            echo "${{ secrets.DB_PASSWORD }}" > .env
+            echo DB_NAME="$DB_NAME" > .env
+            echo DB_USERNAME="$DB_USERNAME" > .env
+            echo DB_PASSWORD="$DB_PASSWORD" > .env
             sudo docker-compose -f ~/$DIRECTORY/docker-compose.prod.yml up --build --force-recreate --no-deps -d
             echo $DIRECTORY - $REPO
 
