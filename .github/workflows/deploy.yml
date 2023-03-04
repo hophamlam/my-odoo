@@ -9,15 +9,23 @@ jobs:
         uses: appleboy/ssh-action@master
         env:
           REPO: ${{ github.repository }} # e.g. "appleboy/ssh-action"
+          DIRECTORY: ${{ github.event.repository.name }}
           # TOKEN: ${{ github.token }}
         with: 
-          envs: REPO,TOKEN
+          envs: REPO,DIRECTORY
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.KEY }}
           # password: ${{ secrets.PASSWORD }}
           # port: ${{ secrets.PORT }}
           script: |
-            git clone https://github.com/$REPO.git
+            if [ ! -d ~/$DIRECTORY ]
+            then
+            sudo git clone https://github.com/$REPO.git
+            else
+            sudo git -C ~/$DIRECTORY pull 
+            fi
+            sudo docker-compose -f ~/$DIRECTORY/docker-compose.prod.yml up --build --force-recreate --no-deps -d
+            echo $DIRECTORY - $REPO
 
             
