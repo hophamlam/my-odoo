@@ -21,13 +21,11 @@ jobs:
             sudo git -C ~/${{ github.event.repository.name }} pull 
             fi
       
-      - name: remove and create new .env
-        env:
-          ODOO_DB: ${{ secrets.ODOO_DB }}
-        run: |
-            sudo rm ~/my-odoo/.env
-            touch .env
-            echo "${{ secrets.DB_NAME }}" > .env
+      - name: make .env file
+        uses: SpicyPizza/create-envfile@v1.3
+          with:
+            ${{ secrets.ODOO_DB }}
+
 
       - name: docker-compose up
         run: |
