@@ -9,7 +9,7 @@ jobs:
         uses: appleboy/ssh-action@master
         env:
           REPO: ${{ github.repository }} # e.g. "appleboy/ssh-action"
-          TOKEN: ${{ github.token }}
+          # TOKEN: ${{ github.token }}
         with: 
           envs: REPO,TOKEN
           host: ${{ secrets.HOST }}
@@ -18,6 +18,6 @@ jobs:
           # password: ${{ secrets.PASSWORD }}
           # port: ${{ secrets.PORT }}
           script: |
-            git clone https://$TOKEN@github.com/$REPO.git
+            git clone https://github.com/$REPO.git
 
             
