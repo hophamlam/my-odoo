@@ -24,7 +24,7 @@ jobs:
       - name: make .env file
         uses: SpicyPizza/create-envfile@v1.3
         with:
-          ${{ secrets.ODOO_DB }}
+          envkey_: ${{ secrets.ODOO_DB }}
 
 
       - name: docker-compose up
