@@ -10,8 +10,8 @@ jobs:
         env:
           USERNAME: ${{ github.repository_owner }}
           REPO: ${{ github.event.repository.name }}
-        with: USERNAME, REPO
-        envs: 
+        with: 
+          envs: USERNAME, REPO
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.KEY }}
