@@ -12,7 +12,7 @@ jobs:
         uses: SpicyPizza/create-envfile@v1
         with:
           secrets: |
-            ${{ secrets.ODOO_DB }}
+            ${{ secrets.HOST }}
 
       - name: Copy .env file to server
         uses: appleboy/scp-action@master
@@ -30,12 +30,7 @@ jobs:
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.KEY }}
           run: |
-            if [ ! -d ~/${{ github.event.repository.name }} ]
-            then
-            sudo git clone https://github.com/${{ github.repository }}.git
-            else
             sudo git -C ~/${{ github.event.repository.name }} pull 
-            fi
             sudo docker-compose -f ~/${{ github.event.repository.name }}/docker-compose.prod.yml up --build --force-recreate --no-deps -d
 
 
