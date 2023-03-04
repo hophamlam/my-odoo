@@ -25,7 +25,7 @@ jobs:
         env:
           ODOO_DB: ${{ secrets.ODOO_DB }}
         run: |
-            sudo rm ~/${{ github.event.repository.name }}/.env
+            sudo rm ~/my-odoo/.env
             touch .env
             echo "${{ secrets.DB_NAME }}" > .env
 
