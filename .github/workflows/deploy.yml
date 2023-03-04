@@ -13,7 +13,7 @@ jobs:
           key: ${{ secrets.KEY }}
 
       - name: git pull
-          run: |
+        run: |
             if [ ! -d ~/${{ github.event.repository.name }} ]
             then
             sudo git clone https://github.com/${{ github.repository }}.git
@@ -22,15 +22,15 @@ jobs:
             fi
       
       - name: remove and create new .env
-          env:
-            ODOO_DB: ${{ secrects.ODOO_DB }}
-          run: |
+        env:
+          ODOO_DB: ${{ secrects.ODOO_DB }}
+        run: |
             sudo rm ~/${{ github.event.repository.name }}/.env
             touch .env
             echo DB_NAME="${{ secrets.DB_NAME }}" > .env
 
       - name: docker-compose up
-          run: |
+        run: |
             sudo docker-compose -f ~/${{ github.event.repository.name }}/docker-compose.prod.yml up --build --force-recreate --no-deps -d
 
 
