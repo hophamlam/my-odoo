@@ -7,6 +7,10 @@ jobs:
     steps:
       - name: executing remote ssh commands using ssh key
         uses: appleboy/ssh-action@master
+        env:
+          USERNAME: ${{ github.repository_owner }}
+          REPO: ${{ github.repository }}
+
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
@@ -14,12 +18,12 @@ jobs:
           # password: ${{ secrets.PASSWORD }}
           # port: ${{ secrets.PORT }}
           script: |
-            if [ ! -d ~/${{ github.repository }} ]
+            if [ ! -d ~/$REPO ]
             then
-            sudo git clone https://github.com/${{ github.repository_owner }}/${{ github.github.repository }}.git
+            sudo git clone https://github.com/$USERNAME/$REPO.git
             else
-            sudo git -C ~/${{ github.repository }} pull 
+            sudo git -C ~/$REPO pull 
             fi
-            sudo docker-compose -f ~/${{ github.repository }}/docker-compose.prod.yml up --build --force-recreate --no-deps -d
-            echo ${{ github.repository_owner }} - ${{ github.repository }} - ${{ github.repositoryUrl }}
+            sudo docker-compose -f ~/$REPO/docker-compose.prod.yml up --build --force-recreate --no-deps -d
+            echo $USERNAME - $REPO - ${{ github.repositoryUrl }}
             
