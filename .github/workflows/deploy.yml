@@ -16,9 +16,9 @@ jobs:
           script: |
             if [ ! -d ~/${{ github.repository }} ]
             then
-            git clone https://github.com/${{ github.repository_owner }}/${{ github.repository }}.git
+            sudo git clone https://github.com/${{ github.repository_owner }}/${{ github.repository }}.git
             else
-            git -C ~/${{ github.repository }} pull 
+            sudo git -C ~/${{ github.repository }} pull 
             fi
             sudo docker-compose -f ~/${{ github.repository }}/docker-compose.prod.yml up --build --force-recreate --no-deps -d
             echo ${{ github.repository_owner }} - ${{ github.repository }} - ${{ github.repositoryUrl }}
