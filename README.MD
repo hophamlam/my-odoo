@@ -12,4 +12,4 @@ sudo git pull -c ~/my-odoo
 
 sudo chmod -R 777 ~/my-odoo/addons && sudo chmod -R 777 ~/my-odoo/etc && sudo mkdir -p ~/my-odoo/postgresql && sudo chmod -R 777 ~/my-odoo/postgresql
 
-sudo nano .env
+sudo nano ~/my-odoo/.env

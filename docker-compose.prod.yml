@@ -5,9 +5,9 @@ services:
     image: postgres:13
     user: root
     environment:
-      - POSTGRES_PASSWORD=odoo
-      - POSTGRES_USER=odoo
-      - POSTGRES_DB=postgres
+      - POSTGRES_PASSWORD=$DB_PASSWORD
+      - POSTGRES_USER=$DB_USER
+      - POSTGRES_DB=$DB_NAME
     restart: always             # run as a service
     volumes:
         - ./postgresql:/var/lib/postgresql/data
@@ -26,8 +26,8 @@ services:
 #    command: odoo scaffold /mnt/extra-addons/custom_module
     environment:
       - HOST=odoo-db
-      - USER=odoo
-      - PASSWORD=odoo
+      - USER=$DB_USER
+      - PASSWORD=$DB_PASSWORD
     volumes:
       #- /etc/timezone:/etc/timezone:ro
       #- /etc/localtime:/etc/localtime:ro
