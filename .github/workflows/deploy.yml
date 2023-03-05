@@ -1,41 +1,16 @@
-name: remote ssh command
-on: [push]
-jobs:
-  build:
-    name: Deploy to server
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-      - name: Create .env file
-        uses: SpicyPizza/create-envfile@v1
-        with:
-          secrets: |
-            DB_HOST=${{ secrets.HOST }}
-            DB_USERNAME=${{ secrets.USERNAME }}
-
-      - name: Copy .env file to server
-        uses: appleboy/scp-action@master
-        with:
-          local: .env
-          remote_path: /my-odoo/
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.USERNAME }}
-          key: ${{ secrets.KEY }}
-
-      - name: git pull
-        uses: appleboy/ssh-action@master
-        with: 
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.USERNAME }}
-          key: ${{ secrets.KEY }}
-          run: |
-            sudo git -C ~/${{ github.event.repository.name }} pull 
-            sudo docker-compose -f ~/${{ github.event.repository.name }}/docker-compose.prod.yml up --build --force-recreate --no-deps -d
-
-
-
-
-
-            
+# name: remote ssh command
+# on: [push]
+# jobs:
+#   build:
+#     name: Deploy to server
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: git pull
+#         uses: appleboy/ssh-action@master
+#         with: 
+#           host: ${{ secrets.HOST }}
+#           username: ${{ secrets.USERNAME }}
+#           key: ${{ secrets.KEY }}
+#           script: |
+#             sudo git -C ~/${{ github.event.repository.name }} pull 
+#             sudo docker-compose -f ~/${{ github.event.repository.name }}/docker-compose.prod.yml up --build --force-recreate --no-deps -d
