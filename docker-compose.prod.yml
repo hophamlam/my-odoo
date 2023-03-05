@@ -1,7 +1,7 @@
 version: '2'
 services:
   odoo-db:
-    name: odoo-db
+    container_name: odoo-db
     image: postgres:11 # Change this for Postgres version
     user: root
     environment:
@@ -13,7 +13,7 @@ services:
         - ./postgresql:/var/lib/postgresql/data
 
   odoo-app:
-    name: odoo-app
+    container_name: odoo-app
     image: odoo:13 # Change this for Odoo version
     user: root
     depends_on:
