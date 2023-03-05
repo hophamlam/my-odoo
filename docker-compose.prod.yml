@@ -18,11 +18,11 @@ services:
     user: root
     depends_on:
       - odoo-db
-    # ports: # access directly from ip server
-    #   - "10013:8069" #app
+    ports: # access directly from ip server
+      - "10013:8069" #app
     #   - "20013:8072" # live chat
-    expose: # use this if your odoo is behind a reverse proxy server
-      - "8069" 
+    # expose: # use this if your odoo is behind a reverse proxy server
+    #   - "8069" 
       # - "8072"
     tty: true
     command: --
