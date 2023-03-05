@@ -2,7 +2,7 @@ version: '2'
 services:
   odoo-db:
     container_name: odoo-db
-    image: postgres:11 # Change this for Postgres version
+    image: postgres:13 # Change this for Postgres version
     user: root
     environment:
       - POSTGRES_PASSWORD=$DB_PASSWORD
@@ -14,7 +14,7 @@ services:
 
   odoo-app:
     container_name: odoo-app
-    image: odoo:13 # Change this for Odoo version
+    image: odoo:14 # Change this for Odoo version
     user: root
     depends_on:
       - odoo-db

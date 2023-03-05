@@ -13,4 +13,4 @@ jobs:
           key: ${{ secrets.KEY }}
           script: |
             sudo git -C ~/${{ github.event.repository.name }} pull 
-            sudo docker-compose -f ~/${{ github.event.repository.name }}/docker-compose.prod.yml up --build --force-recreate --no-deps -d
+            sudo docker-compose -f ~/${{ github.event.repository.name }}/docker-compose.prod.yml up --build --force-recreate -d
