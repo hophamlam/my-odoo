@@ -8,7 +8,7 @@ curl -s https://raw.githubusercontent.com/hophamlam/my-odoo/main/run.sh | sudo b
 
 sudo git clone https://github.com/hophamlam/my-odoo.git
 
-sudo git pull -c ~/my-odoo
+sudo git -C ~/my-odoo pull
 
 sudo chmod -R 777 ~/my-odoo/addons && sudo chmod -R 777 ~/my-odoo/etc && sudo mkdir -p ~/my-odoo/postgresql && sudo chmod -R 777 ~/my-odoo/postgresql
 
