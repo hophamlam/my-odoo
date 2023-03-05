@@ -1,6 +1,7 @@
 version: '2'
 services:
-  db:
+  odoo-db:
+    name: odoo-db
     image: postgres:11 # Change this for Postgres version
     user: root
     environment:
@@ -11,11 +12,12 @@ services:
     volumes:
         - ./postgresql:/var/lib/postgresql/data
 
-  odoo13:
+  odoo-app:
+    name: odoo-app
     image: odoo:13 # Change this for Odoo version
     user: root
     depends_on:
-      - db
+      - odoo-db
     # ports: # access directly from ip server
     #   - "10013:8069" #app
     #   - "20013:8072" # live chat
@@ -26,7 +28,7 @@ services:
     command: --
 #    command: odoo scaffold /mnt/extra-addons/test_module
     environment:
-      - HOST=db
+      - HOST=odoo-db
       - USER=$DB_USER
       - PASSWORD=$DB_PASSWORD
     volumes:
