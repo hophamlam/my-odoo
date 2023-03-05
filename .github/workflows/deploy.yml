@@ -1,16 +1,16 @@
-# name: remote ssh command
-# on: [push]
-# jobs:
-#   build:
-#     name: Deploy to server
-#     runs-on: ubuntu-latest
-#     steps:
-#       - name: git pull
-#         uses: appleboy/ssh-action@master
-#         with: 
-#           host: ${{ secrets.HOST }}
-#           username: ${{ secrets.USERNAME }}
-#           key: ${{ secrets.KEY }}
-#           script: |
-#             sudo git -C ~/${{ github.event.repository.name }} pull 
-#             sudo docker-compose -f ~/${{ github.event.repository.name }}/docker-compose.prod.yml up --build --force-recreate --no-deps -d
+name: remote ssh command
+on: [push]
+jobs:
+  build:
+    name: Deploy to server
+    runs-on: ubuntu-latest
+    steps:
+      - name: git pull
+        uses: appleboy/ssh-action@master
+        with: 
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.KEY }}
+          script: |
+            sudo git -C ~/${{ github.event.repository.name }} pull 
+            sudo docker-compose -f ~/${{ github.event.repository.name }}/docker-compose.prod.yml up --build --force-recreate --no-deps -d

@@ -5,3 +5,4 @@ etc/addons
 etc/odoo-server.log
 postgresql/
 .gitignore
+.env
