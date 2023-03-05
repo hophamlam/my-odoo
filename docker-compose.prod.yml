@@ -1,31 +1,36 @@
 version: '2'
 services:
-  db:
-    image: postgres:13
+  odoo-db:
+    container_name: odoo-db
+    image: postgres:11 # Change this for Postgres version
     user: root
     environment:
-      - POSTGRES_PASSWORD=odoo
-      - POSTGRES_USER=odoo
-      - POSTGRES_DB=postgres
+      - POSTGRES_PASSWORD=$DB_PASSWORD
+      - POSTGRES_USER=$DB_USER
+      - POSTGRES_DB=$DB_NAME
     restart: always             # run as a service
     volumes:
         - ./postgresql:/var/lib/postgresql/data
 
-  odoo14:
-    image: odoo:14
+  odoo-app:
+    container_name: odoo-app
+    image: odoo:13 # Change this for Odoo version
     user: root
     depends_on:
-      - db
-    ports:
-      - "10014:8069"
-      - "20014:8072" # live chat
+      - odoo-db
+    ports: # access directly from ip server
+      - "10013:8069" #app
+    #   - "20013:8072" # live chat
+    # expose: # use this if your odoo is behind a reverse proxy server
+    #   - "8069" 
+      # - "8072"
     tty: true
     command: --
-#    command: odoo scaffold /mnt/extra-addons/custom_module
+#    command: odoo scaffold /mnt/extra-addons/test_module
     environment:
-      - HOST=db
-      - USER=odoo
-      - PASSWORD=odoo
+      - HOST=odoo-db
+      - USER=$DB_USER
+      - PASSWORD=$DB_PASSWORD
     volumes:
       #- /etc/timezone:/etc/timezone:ro
       #- /etc/localtime:/etc/localtime:ro
@@ -33,52 +38,3 @@ services:
       - ./addons:/mnt/extra-addons
       - ./etc:/etc/odoo
     restart: always             # run as a service
-
-
-
-
-
-
-
-
-
-# version: '2'
-# services:
-#   odoo-db:
-#     container_name: odoo-db
-#     image: postgres:11 # Change this for Postgres version
-#     user: root
-#     environment:
-#       - POSTGRES_PASSWORD=$DB_PASSWORD
-#       - POSTGRES_USER=$DB_USER
-#       - POSTGRES_DB=$DB_NAME
-#     restart: always             # run as a service
-#     volumes:
-#         - ./postgresql:/var/lib/postgresql/data
-
-#   odoo-app:
-#     container_name: odoo-app
-#     image: odoo:13 # Change this for Odoo version
-#     user: root
-#     depends_on:
-#       - odoo-db
-#     ports: # access directly from ip server
-#       - "10013:8069" #app
-#     #   - "20013:8072" # live chat
-#     # expose: # use this if your odoo is behind a reverse proxy server
-#     #   - "8069" 
-#       # - "8072"
-#     tty: true
-#     command: --
-# #    command: odoo scaffold /mnt/extra-addons/test_module
-#     environment:
-#       - HOST=odoo-db
-#       - USER=$DB_USER
-#       - PASSWORD=$DB_PASSWORD
-#     volumes:
-#       #- /etc/timezone:/etc/timezone:ro
-#       #- /etc/localtime:/etc/localtime:ro
-#       # - ./entrypoint.sh:/entrypoint.sh   # if you want to install additional Python packages, uncomment this line!
-#       - ./addons:/mnt/extra-addons
-#       - ./etc:/etc/odoo
-#     restart: always             # run as a service
