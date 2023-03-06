@@ -5,7 +5,7 @@ This Odoo repo is built from [minhng92/odoo-13-docker-compose](https://github.co
 - Multi version 
 - `.env` with custom variables
 - `CI/CD` using `Github Actions`
-- `Development` and `production` ready
+- `Production` ready (not too stressful 🤣🤣)
 
 That's it, let's take a look!
 
