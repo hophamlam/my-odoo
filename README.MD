@@ -21,7 +21,14 @@ That's it, let's take a look!
 This will execute `sudo nano ~/my-odoo/.env` and bring you to `nano editor`, input yours or check my `.env`. 
 
 ```bash
-sudo git clone https://github.com/hophamlam/my-odoo.git && sudo chmod -R 777 ~/my-odoo/addons && sudo chmod -R 777 ~/my-odoo/etc && sudo mkdir -p ~/my-odoo/postgresql && sudo chmod -R 777 ~/my-odoo/postgresql && sudo nano ~/my-odoo/etc/odoo.conf && sudo nano ~/my-odoo/.env && sudo docker-compose -f ~/my-odoo/docker-compose.yml up 
+sudo git clone https://github.com/hophamlam/my-odoo.git && 
+sudo chmod -R 777 ~/my-odoo/addons && 
+sudo chmod -R 777 ~/my-odoo/etc && 
+sudo mkdir -p ~/my-odoo/postgresql && 
+sudo chmod -R 777 ~/my-odoo/postgresql && 
+sudo nano ~/my-odoo/etc/odoo.conf && 
+sudo nano ~/my-odoo/.env && 
+sudo docker-compose -f ~/my-odoo/docker-compose.yml up -d
 ```
 
 This is an example of my `.env`
@@ -63,6 +70,11 @@ Remove all `Odoo containers stack` and the whole directory `my-odoo`
 ```
 sudo docker-compose -f ~/my-odoo/docker-compose.yml down
 sudo rm -rf ~/my-odoo
+```
+
+Check log
+```bash
+cat odoo-server.log
 ```
 
 # For production
