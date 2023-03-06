@@ -10,3 +10,5 @@ sudo git clone https://github.com/hophamlam/my-odoo.git && sudo chmod -R 777 ~/m
 sudo git -C ~/my-odoo pull
 
 sudo nano ~/my-odoo/.env
+
+sudo rm -rf ~/my-odoo
