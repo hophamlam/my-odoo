@@ -13,7 +13,7 @@ That's it, let's take a look!
 
 It will ask for editing `odoo.conf`, leave it default if you're not experienced. You can set master password on your own or leave it commented (a auto-generated will be provided)
 
-
+![Alt text](screenshots/master-password.jpg)
 
 ```bash
 sudo git clone https://github.com/hophamlam/my-odoo.git && sudo chmod -R 777 ~/my-odoo/addons && sudo chmod -R 777 ~/my-odoo/etc && sudo mkdir -p ~/my-odoo/postgresql && sudo chmod -R 777 ~/my-odoo/postgresql && sudo nano ~/my-odoo/etc/odoo.conf && sudo nano ~/my-odoo/.env && sudo docker-compose -f ~/my-odoo/docker-compose.yml up 
@@ -44,6 +44,6 @@ sudo nano ~/my-odoo/.env
 Remove all `Odoo containers stack` and the whole directory `my-odoo`
 
 ```
-sudo docker-compose -f ~/my-odoo/docker-compose.prod.yml down
+sudo docker-compose -f ~/my-odoo/docker-compose.yml down
 sudo rm -rf ~/my-odoo
 ```
