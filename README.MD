@@ -79,9 +79,8 @@ sudo nano ~/my-odoo/.env
 
 Remove all `Odoo containers stack` and the whole directory `my-odoo`
 
-```
-sudo docker-compose -f ~/my-odoo/docker-compose.yml down &&
-sudo rm -rf ~/my-odoo
+```bash
+sudo docker-compose -f ~/my-odoo/docker-compose.yml down && sudo rm -rf ~/my-odoo
 ```
 
 Check log
