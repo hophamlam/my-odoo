@@ -12,5 +12,6 @@ jobs:
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.KEY }}
           script: |
+            sudo git -C ~/${{ github.event.repository.name }} restore .
             sudo git -C ~/${{ github.event.repository.name }} pull 
             sudo docker-compose -f ~/${{ github.event.repository.name }}/docker-compose.yml up --build --force-recreate -d

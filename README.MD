@@ -24,8 +24,8 @@ sudo chmod -R 777 ~/my-odoo/addons &&
 sudo chmod -R 777 ~/my-odoo/etc && 
 sudo mkdir -p ~/my-odoo/postgresql && 
 sudo chmod -R 777 ~/my-odoo/postgresql && 
-sudo nano ~/my-odoo/etc/odoo.conf && 
 sudo nano ~/my-odoo/.env && 
+sudo nano ~/my-odoo/etc/odoo.conf && 
 sudo docker-compose -f ~/my-odoo/docker-compose.yml up -d
 ```
 
@@ -80,7 +80,8 @@ sudo nano ~/my-odoo/.env
 Remove all `Odoo containers stack` and the whole directory `my-odoo`
 
 ```bash
-sudo docker-compose -f ~/my-odoo/docker-compose.yml down && sudo rm -rf ~/my-odoo
+sudo docker-compose -f ~/my-odoo/docker-compose.yml down && 
+sudo rm -rf ~/my-odoo
 ```
 
 Check log
