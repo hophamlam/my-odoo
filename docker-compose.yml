@@ -2,7 +2,7 @@ version: '2'
 services:
   odoo-db:
     container_name: odoo-db
-    image: postgres:${PG_VERSION:-15}
+    image: postgres:${PG_VERSION:-14}
     user: root
     environment:
       - POSTGRES_PASSWORD=${DB_PASSWORD:-odoo}
@@ -14,15 +14,15 @@ services:
 
   odoo-app:
     container_name: odoo-app
-    image: odoo:${ODOO_VERSION:-16}
+    image: odoo:${ODOO_VERSION:-15}
     user: root
     depends_on:
       - odoo-db
     ports:
-      - "${APP_PORT:-10016}:8069"
-      # - "20014:8072" # live chat
+      - "${APP_PORT:-10015}:8069"
+      # - "20015:8072" # live chat
     # expose: # in case you want to use reverse proxy server
-    #   - ""${APP_PORT:-10016}"
+    #   - ""${APP_PORT:-10015}"
     tty: true
     command: --
 #    command: odoo scaffold /mnt/extra-addons/custom_module
