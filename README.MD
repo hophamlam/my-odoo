@@ -39,6 +39,20 @@ DB_USER=test-odoo
 DB_PASSWORD=test-odoo
 ```
 
+This is an example of my `odoo.conf`
+```conf
+# Check file odoo-sample.conf for more Odoo config (smtp, i18n,...)
+# Uncomment admin_passwd if you want to set the master password, a auto-generated password will provided at start-up if comment this line
+# Recommend leaving the setting at default 
+
+[options]
+; admin_passwd = odoo-test 
+addons_path = /mnt/extra-addons
+data_dir = /etc/odoo
+logfile = /etc/odoo/odoo-server.log
+dev_mode = reload
+```
+
 It will ask for editing `odoo.conf`, leave it default if you're not experienced. You can set master password on your own or leave it commented (a auto-generated will be provided)
 
 ![Alt text](screenshots/odoo.conf.jpg)
