@@ -20,12 +20,12 @@ This will execute `sudo nano ~/my-odoo/.env` and bring you to `nano editor`, inp
 
 ```bash
 sudo git clone https://github.com/hophamlam/my-odoo.git && 
+sudo nano ~/my-odoo/.env && 
+sudo nano ~/my-odoo/etc/odoo.conf && 
 sudo chmod -R 777 ~/my-odoo/addons && 
 sudo chmod -R 777 ~/my-odoo/etc && 
 sudo mkdir -p ~/my-odoo/postgresql && 
 sudo chmod -R 777 ~/my-odoo/postgresql && 
-sudo nano ~/my-odoo/.env && 
-sudo nano ~/my-odoo/etc/odoo.conf && 
 sudo docker-compose -f ~/my-odoo/docker-compose.yml up -d
 ```
 
@@ -86,7 +86,7 @@ sudo rm -rf ~/my-odoo
 
 Check log
 ```bash
-cat odoo-server.log
+cat ~/my-odoo/etc/odoo-server.log
 ```
 
 # For production
