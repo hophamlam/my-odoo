@@ -9,8 +9,6 @@ This Odoo repo is built from [minhng92/odoo-13-docker-compose](https://github.co
 
 That's it, let's take a look!
 
-
-
 # Prerequisites
 - Recommended OS: Linux Ubuntu 20.04 LTS with at least 2GB RAM.
 - Have basic understanding [Odoo](https://www.odoo.com/).
@@ -68,7 +66,7 @@ sudo nano ~/my-odoo/.env
 Remove all `Odoo containers stack` and the whole directory `my-odoo`
 
 ```
-sudo docker-compose -f ~/my-odoo/docker-compose.yml down
+sudo docker-compose -f ~/my-odoo/docker-compose.yml down &&
 sudo rm -rf ~/my-odoo
 ```
 
