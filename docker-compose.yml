@@ -18,7 +18,7 @@ services:
     user: root
     depends_on:
       - odoo-db
-    ports:
+    # ports:
       # - "${APP_PORT:-10015}:8069"
       # - "20015:8072" # live chat
     expose: # in case you want to use reverse proxy server
