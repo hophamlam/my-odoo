@@ -1,8 +1,8 @@
 etc/odoo-server.log
 etc/sessions
 etc/filestore
+postgresql/
 etc/addons
 etc/odoo.conf
-postgresql/
 .gitignore
 .env

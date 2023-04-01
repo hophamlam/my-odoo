@@ -89,8 +89,20 @@ Check log
 cat ~/my-odoo/etc/odoo-server.log
 ```
 
+Remove all the directories created by odoo-docker (in case you change to another odoo/postgres version):
+```bash
+sudo rm ~/my-odoo/etc/odoo-server.log
+sudo rm -rf ~/my-odoo/etc/sessions
+sudo rm -rf ~/my-odoo/etc/filestore
+sudo rm -rf ~/my-odoo/postgresql/
+```
+
 # For production
 
-Modify `GIthub Actions` workflows for your pipeline, mine is a very basic one.
+Modify `Github Actions` workflows for your pipeline, mine is a very basic one.
 
 This setup is tested with just few instances for less-than-10-user project (development, staging, production ci/cd with very low effort) and with not-so-busy activities. Should be carefully test if you use it as massive services (k8s, multi-workers, load balancing)
+
+# Third-party apps I used
+
+- [auto_database_backup_v16](https://apps.odoo.com/apps/modules/16.0/auto_database_backup/)
